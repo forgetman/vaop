@@ -3,7 +3,7 @@ an aop project
 
 Third part
 ------
-I use [aspectjx](https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx)instead of [aspectj](https://github.com/eclipse/org.aspectj), because it is more easier to use and support Kotlin
+I use [aspectjx](https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx) instead of [aspectj](https://github.com/eclipse/org.aspectj), because it is more easier to use and support Kotlin
 
 Download
 --------
@@ -13,19 +13,27 @@ dependencies {
   implementation 'com.github.forgetman:aspect:0.0.2'
 }
 ```
+add it in your root `build.gradle` at the end of repositories:
+
+```groovy
+allprojects {
+    repositories {
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
 
 add the plugin to your `buildscript`:
 
 ```groovy
 buildscript {
-  repositories {
-    maven { url 'https://jitpack.io' }
-  }
   dependencies {
     classpath 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1'
   }
 }
 ```
+
+
 
 and then apply it in your module:
 
