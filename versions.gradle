@@ -30,7 +30,7 @@ ext.plugs = [
         android: [
                 app   : 'com.android.application',
                 lib   : 'com.android.library',
-                aspect: 'com.hujiang.android-aspectjx',
+                aspect: 'android-aspectjx',
         ],
         maven  : 'com.github.dcendents.android-maven',
 ]
@@ -41,32 +41,10 @@ ext.deps = [
                 aspectTools : "org.aspectj:aspectjtools:$versions.aspectj",
                 mavenPlugin : 'com.github.dcendents:android-maven-gradle-plugin:2.1',
         ],
-        support: [
-                compat          : "com.android.support:support-compat:$versions.supportLibrary",
-                appcompat       : "com.android.support:appcompat-v7:$versions.supportLibrary",
-                annotations     : "com.android.support:support-annotations:$versions.supportLibrary",
-                v4              : "com.android.support:support-v4:$versions.supportLibrary",
-                recyclerview    : "com.android.support:recyclerview-v7:$versions.supportLibrary",
-                gridlayout      : "com.android.support:gridlayout-v7:$versions.supportLibrary",
-                cardview        : "com.android.support:cardview-v7:$versions.supportLibrary",
-                constraintLayout: 'com.android.support.constraint:constraint-layout:1.1.0',
-                test            : [
-                        runner  : 'com.android.support.test:runner:1.0.1',
-                        espresso: 'com.android.support.test.espresso:espresso-core:3.0.1',
-                        junit4  : 'junit:junit:4.12',
-                        junit5  : [
-                                api   : 'org.junit.jupiter:junit-jupiter-api:5.2.0',
-                                engine: 'org.junit.jupiter:junit-jupiter-engine:5.2.0',
-                                params: 'org.junit.jupiter:junit-jupiter-params:5.2.0',
-                        ]
-                ],
-                dex             : 'com.android.support:multidex:1.0.2',
-        ],
         rx     : [
                 java   : "io.reactivex.rxjava2:rxjava:$versions.rx.java",
                 android: "io.reactivex.rxjava2:rxandroid:$versions.rx.android", // https://github.com/ReactiveX/RxAndroid
         ],
-        lottie : 'com.airbnb.android:lottie:2.5.4', // https://github.com/airbnb/lottie 加载AE制作出来的json直接展示效果的库
 ]
 
 static def addRepos(RepositoryHandler handler) {
@@ -74,7 +52,6 @@ static def addRepos(RepositoryHandler handler) {
     handler.jcenter()
     handler.mavenCentral()
     handler.maven { url 'https://jitpack.io' }
-    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
 }
 
 ext.addRepos = this.&addRepos

@@ -1,5 +1,9 @@
 apply plugin: plugs.android.lib
 apply plugin: plugs.android.aspect
+apply plugin: plugs.maven
+
+group='com.github.forgetman'
+
 
 android {
     compileSdkVersion versions.compileSdk
