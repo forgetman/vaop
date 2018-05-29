@@ -1,0 +1,80 @@
+/**
+ * 共享编译文件, 保证所有工程使用同样的依赖和maven库
+ **/
+ext.versions = [
+        minSdk        : 15,
+        compileSdk    : 27,
+        buildTools    : '27.0.3',
+
+        androidPlugin : '3.1.2',
+
+        versionCode   : 100,
+        versionName   : '1.0',
+
+        java          : JavaVersion.VERSION_1_8,
+        supportLibrary: '27.1.1', // 支持生命周期架构组件 since 26.1
+
+        rx            : [
+                android   : '2.0.2',
+        ],
+
+        aspectj       : '1.8.13',
+]
+
+ext.configs = [
+        dimension   : 'default',
+        abortOnError: false,
+]
+
+ext.plugs = [
+        android: [
+                app   : 'com.android.application',
+                lib   : 'com.android.library',
+                aspect: 'com.hujiang.android-aspectjx',
+        ],
+        maven  : 'com.github.dcendents.android-maven',
+]
+ext.deps = [
+        path   : [
+                gradlePlugin: "com.android.tools.build:gradle:$versions.androidPlugin",
+                aspect      : 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1', // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
+                aspectTools : "org.aspectj:aspectjtools:$versions.aspectj",
+                mavenPlugin : 'com.github.dcendents:android-maven-gradle-plugin:2.1',
+        ],
+        support: [
+                compat          : "com.android.support:support-compat:$versions.supportLibrary",
+                appcompat       : "com.android.support:appcompat-v7:$versions.supportLibrary",
+                annotations     : "com.android.support:support-annotations:$versions.supportLibrary",
+                v4              : "com.android.support:support-v4:$versions.supportLibrary",
+                recyclerview    : "com.android.support:recyclerview-v7:$versions.supportLibrary",
+                gridlayout      : "com.android.support:gridlayout-v7:$versions.supportLibrary",
+                cardview        : "com.android.support:cardview-v7:$versions.supportLibrary",
+                constraintLayout: 'com.android.support.constraint:constraint-layout:1.1.0',
+                test            : [
+                        runner  : 'com.android.support.test:runner:1.0.1',
+                        espresso: 'com.android.support.test.espresso:espresso-core:3.0.1',
+                        junit4  : 'junit:junit:4.12',
+                        junit5  : [
+                                api   : 'org.junit.jupiter:junit-jupiter-api:5.2.0',
+                                engine: 'org.junit.jupiter:junit-jupiter-engine:5.2.0',
+                                params: 'org.junit.jupiter:junit-jupiter-params:5.2.0',
+                        ]
+                ],
+                dex             : 'com.android.support:multidex:1.0.2',
+        ],
+        rx     : [
+                java   : "io.reactivex.rxjava2:rxjava:$versions.rx.java",
+                android: "io.reactivex.rxjava2:rxandroid:$versions.rx.android", // https://github.com/ReactiveX/RxAndroid
+        ],
+        lottie : 'com.airbnb.android:lottie:2.5.4', // https://github.com/airbnb/lottie 加载AE制作出来的json直接展示效果的库
+]
+
+static def addRepos(RepositoryHandler handler) {
+    handler.google()
+    handler.jcenter()
+    handler.mavenCentral()
+    handler.maven { url 'https://jitpack.io' }
+    handler.maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
+}
+
+ext.addRepos = this.&addRepos

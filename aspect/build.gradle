@@ -1,0 +1,26 @@
+apply plugin: plugs.android.lib
+apply plugin: plugs.android.aspect
+
+android {
+    compileSdkVersion versions.compileSdk
+    buildToolsVersion versions.buildTools
+
+    defaultConfig {
+        minSdkVersion versions.minSdk
+        targetSdkVersion versions.compileSdk
+    }
+
+    lintOptions {
+        abortOnError configs.abortOnError
+    }
+
+    compileOptions {
+        sourceCompatibility versions.java
+        targetCompatibility versions.java
+    }
+}
+
+dependencies {
+    compileOnly 'com.github.forgetman:logger:1.0.4'
+    compileOnly deps.rx.android
+}

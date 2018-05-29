@@ -1,0 +1,19 @@
+buildscript {
+    apply from: 'versions.gradle'
+    addRepos(repositories)
+
+    dependencies {
+        classpath deps.path.gradlePlugin
+        classpath deps.path.mavenPlugin
+        classpath deps.path.aspect
+        classpath deps.path.aspectTools
+    }
+}
+
+allprojects {
+    addRepos(repositories)
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
