@@ -8,7 +8,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 
 import java.util.Locale;
 
-import aspect.annotation.Trace;
+import aspect.annotation.Duration;
 import aspect.util.StopWatch;
 import logger.L;
 
@@ -19,22 +19,22 @@ import logger.L;
  * @since 2018/5/11
  */
 @Aspect
-public class TraceAspect extends BaseAspect {
+public class DurationAspect extends BaseAspect {
 
-    @Pointcut(START + "Trace" + END_METHOD)
+    @Pointcut(START + "Duration" + END_METHOD)
     public void methodCut() {
     }
 
-    @Pointcut(START + "Trace" + END_CONSTRUCTOR)
+    @Pointcut(START + "Duration" + END_CONSTRUCTOR)
     public void constructorCut() {
     }
 
     @Around("methodCut() || constructorCut()")
-    public Object traceMethod(final ProceedingJoinPoint joinPoint) throws Throwable {
+    public Object durationMethod(final ProceedingJoinPoint joinPoint) throws Throwable {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
 
-        Trace trace = methodSignature.getMethod().getAnnotation(Trace.class);
-        if (trace != null && !trace.enable()) {
+        Duration duration = methodSignature.getMethod().getAnnotation(Duration.class);
+        if (duration != null && !duration.enable()) {
             return joinPoint.proceed();
         }
 
