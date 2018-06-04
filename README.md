@@ -20,7 +20,7 @@ Download
 
 ```groovy
 dependencies {
-  implementation 'com.github.forgetman:aspect:0.0.2'
+  implementation 'com.github.forgetman:aspect:0.0.4'
 }
 ```
 add it in your root `build.gradle` at the end of repositories:
@@ -43,12 +43,25 @@ buildscript {
 }
 ```
 
-
-
 and then apply it in your module:
 
 ```groovy
 apply plugin: 'android-aspectjx'
+```
+
+here is a suggestion of using aspect in your project: new a `aspect.gradle` file
+```groovy
+ext.versions += [
+        aspectj: '1.9.1',
+]
+
+ext.paths += [
+        aspect: 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1', // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
+]
+
+ext.plugs += [
+        aspect: 'android-aspectjx',
+]
 ```
 
 if you are using proguard, add this to your `proguard`:

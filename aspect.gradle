@@ -4,7 +4,6 @@ ext.versions += [
 
 ext.paths += [
         aspect: 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1', // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
-        aspectTools : "org.aspectj:aspectjtools:$versions.aspectj",
 ]
 
 ext.plugs += [
