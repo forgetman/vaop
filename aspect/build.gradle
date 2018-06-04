@@ -15,7 +15,7 @@ android {
     }
 
     lintOptions {
-        abortOnError configs.abortOnError
+        abortOnError false
     }
 
     compileOptions {

@@ -5,16 +5,11 @@ subprojects {
                     && !details.requested.name.contains('multidex')) {
                 details.useVersion versions.supportLibrary
             }
-            if (details.requested.group == 'org.jetbrains.kotlin') {
-                details.useVersion versions.kotlin
-            }
             if (details.requested.group == 'io.reactivex.rxjava2') {
                 if (details.requested.name.contains("rxjava")) {
                     details.useVersion versions.rx.java
                 } else if (details.requested.name.contains("rxandroid")) {
                     details.useVersion versions.rx.android
-                } else if (details.requested.name.contains("rxkotlin")) {
-                    details.useVersion versions.rx.kotlin
                 }
             }
             if (details.requested.group == 'org.aspectj') {

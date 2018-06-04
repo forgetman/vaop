@@ -64,7 +64,7 @@ ext.plugs += [
 ]
 
 ext.deps += [
-        aspect: 'com.github.forgetman:aspect:0.0.4'
+        aspect: 'com.github.forgetman:aspect:0.0.5'
 ]
 ```
 

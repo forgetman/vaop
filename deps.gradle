@@ -15,15 +15,10 @@ ext.versions = [
         supportLibrary: '27.1.1', // 支持生命周期架构组件 since 26.1
 
         rx            : [
-                java   : '2.1.14-RC1',
+                java   : '2.1.14',
                 android: '2.0.2',
         ],
 
-]
-
-ext.configs = [
-        dimension   : 'default',
-        abortOnError: false,
 ]
 
 ext.plugs = [
