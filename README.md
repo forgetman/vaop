@@ -62,6 +62,10 @@ ext.paths += [
 ext.plugs += [
         aspect: 'android-aspectjx',
 ]
+
+ext.deps += [
+        aspect: 'com.github.forgetman:aspect:0.0.4'
+]
 ```
 
 if you are using proguard, add this to your `proguard`:
