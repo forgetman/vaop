@@ -1,9 +1,19 @@
 # aspect [![](https://jitpack.io/v/forgetman/aspect.svg)](https://jitpack.io/#forgetman/aspect)
 an aop project
 
-Third part
+Dependency
 ------
 I use [aspectjx](https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx) instead of [aspectj](https://github.com/eclipse/org.aspectj), because it is more easier to use and support Kotlin
+
+Warning
+-------
+You must use java8 in your `mudule.gradle`
+```groovy
+compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
+```
 
 Download
 --------

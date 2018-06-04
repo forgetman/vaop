@@ -1,5 +1,5 @@
 apply plugin: plugs.android.lib
-apply plugin: plugs.android.aspect
+apply plugin: plugs.aspect
 apply plugin: plugs.maven
 
 group='com.github.forgetman'
@@ -25,7 +25,6 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.github.forgetman:logger:1.0.4'
     compileOnly deps.rx.android
 
     testImplementation 'junit:junit:4.12'

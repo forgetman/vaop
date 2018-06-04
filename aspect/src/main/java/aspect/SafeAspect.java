@@ -1,5 +1,7 @@
 package aspect;
 
+import android.util.Log;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -8,8 +10,6 @@ import org.aspectj.lang.annotation.Pointcut;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import logger.L;
-
 /**
  * 防止崩溃
  *
@@ -17,6 +17,8 @@ import logger.L;
  */
 @Aspect
 public class SafeAspect extends BaseAspect {
+
+    private static final String TAG = SafeAspect.class.getSimpleName();
 
     @Pointcut("@within(aspect.annotation.Safe)||@annotation(aspect.annotation.Safe)")
     public void methodCut() {
@@ -28,7 +30,7 @@ public class SafeAspect extends BaseAspect {
         try {
             result = joinPoint.proceed(joinPoint.getArgs());
         } catch (Throwable e) {
-            L.d(getStringFromException(e));
+            Log.e(TAG, getStringFromException(e));
         }
         return result;
     }

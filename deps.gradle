@@ -15,10 +15,10 @@ ext.versions = [
         supportLibrary: '27.1.1', // 支持生命周期架构组件 since 26.1
 
         rx            : [
-                android   : '2.0.2',
+                java   : '2.1.14-RC1',
+                android: '2.0.2',
         ],
 
-        aspectj       : '1.8.13',
 ]
 
 ext.configs = [
@@ -28,20 +28,19 @@ ext.configs = [
 
 ext.plugs = [
         android: [
-                app   : 'com.android.application',
-                lib   : 'com.android.library',
-                aspect: 'android-aspectjx',
+                app: 'com.android.application',
+                lib: 'com.android.library',
         ],
         maven  : 'com.github.dcendents.android-maven',
 ]
+
+ext.paths = [
+        gradlePlugin: "com.android.tools.build:gradle:$versions.androidPlugin",
+        mavenPlugin : 'com.github.dcendents:android-maven-gradle-plugin:2.1',
+]
+
 ext.deps = [
-        path   : [
-                gradlePlugin: "com.android.tools.build:gradle:$versions.androidPlugin",
-                aspect      : 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1', // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
-                aspectTools : "org.aspectj:aspectjtools:$versions.aspectj",
-                mavenPlugin : 'com.github.dcendents:android-maven-gradle-plugin:2.1',
-        ],
-        rx     : [
+        rx: [
                 java   : "io.reactivex.rxjava2:rxjava:$versions.rx.java",
                 android: "io.reactivex.rxjava2:rxandroid:$versions.rx.android", // https://github.com/ReactiveX/RxAndroid
         ],

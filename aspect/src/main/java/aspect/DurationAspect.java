@@ -1,5 +1,7 @@
 package aspect;
 
+import android.util.Log;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,7 +12,6 @@ import java.util.Locale;
 
 import aspect.annotation.Duration;
 import aspect.util.StopWatch;
-import logger.L;
 
 /**
  * 根据方法, 打印消耗的时间
@@ -49,7 +50,7 @@ public class DurationAspect extends BaseAspect {
             className = "Anonymous class";
         }
 
-        L.d(className, buildLogMessage(methodName, stopWatch.getElapsedTime()));
+        Log.d(className, buildLogMessage(methodName, stopWatch.getElapsedTime()));
 
         return result;
     }
