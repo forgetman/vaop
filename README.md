@@ -7,13 +7,15 @@ I use [aspectjx](https://github.com/HujiangTechnology/gradle_plugin_android_aspe
 
 Warning
 -------
-You must use java8 in your `mudule.gradle`
+You must compile with java8, set to your `mudule.gradle`
 ```groovy
 compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
 }
 ```
+
+and it is based on aspectj-v1.8.9
 
 Download
 --------
@@ -23,6 +25,7 @@ dependencies {
   implementation 'com.github.forgetman:aspect:0.0.4'
 }
 ```
+
 add it in your root `build.gradle` at the end of repositories:
 
 ```groovy
@@ -49,28 +52,42 @@ and then apply it in your module:
 apply plugin: 'android-aspectjx'
 ```
 
-here is a suggestion of using aspect in your project: new a `aspect.gradle` file
-```groovy
-ext.versions += [
-        aspectj: '1.9.1',
-]
-
-ext.paths += [
-        aspect: 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1', // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
-]
-
-ext.plugs += [
-        aspect: 'android-aspectjx',
-]
-
-ext.deps += [
-        aspect: 'com.github.forgetman:aspect:0.0.5'
-]
-```
-
 if you are using proguard, add this to your `proguard`:
 
 ```proguard
 -dontwarn aspect.**
 -keep class aspect.** {*;}
 ```
+
+Advise
+----
+here is a suggestion of using aspect in your project: new a `aspect.gradle` file
+```groovy
+ext.paths += [
+        aspect: 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1', // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
+]
+ext.plugs += [
+        aspect: 'android-aspectjx',
+]
+ext.deps += [
+        aspect: 'com.github.forgetman:aspect:0.0.5'
+]
+```
+
+and then apply it to your `build.gradle`
+```groovy
+buildscript {
+    apply from: 'aspect.gradle'
+    dependencies {
+        // ...
+    }
+}
+```
+you can use it like this
+```groovy
+apply plugin: plugs.aspect
+dependencies {
+  implementation deps.aspect
+}
+```
+
