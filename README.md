@@ -3,7 +3,7 @@ an aop project
 
 Update
 ------
-+ v0.0.6:    permission request
++ v0.1.0:    permission request
 
 Dependency
 ------
@@ -26,7 +26,7 @@ Download
 
 ```groovy
 dependencies {
-  implementation 'com.github.forgetman:aspect:0.0.6'
+  implementation 'com.github.forgetman:aspect:0.1.0'
 }
 ```
 
@@ -74,7 +74,7 @@ ext.plugs += [
         aspect: 'android-aspectjx',
 ]
 ext.deps += [
-        aspect: 'com.github.forgetman:aspect:0.0.6'
+        aspect: 'com.github.forgetman:aspect:0.1.0'
 ]
 ```
 
