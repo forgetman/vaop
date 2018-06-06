@@ -54,6 +54,8 @@ public class PermissionRequestActivity extends Activity {
             String[] strings = new String[uncheckPermissions.size()];
             uncheckPermissions.toArray(strings);
             ActivityCompat.requestPermissions(this, strings, PERMISSION_CODE);
+        } else {
+            finish();
         }
     }
 
@@ -77,6 +79,11 @@ public class PermissionRequestActivity extends Activity {
         }
 
         finish();
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
         overridePendingTransition(0, 0);
     }
 
