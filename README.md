@@ -1,6 +1,10 @@
 # aspect [![](https://jitpack.io/v/forgetman/aspect.svg)](https://jitpack.io/#forgetman/aspect)
 an aop project
 
+Update
+------
++ v0.0.6:    permission request
+
 Dependency
 ------
 I use [aspectjx](https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx) instead of [aspectj](https://github.com/eclipse/org.aspectj), because it is more easier to use and support Kotlin
@@ -15,14 +19,14 @@ compileOptions {
 }
 ```
 
-and it is based on aspectj-v1.8.9
+and it is based on aspectj-v1.9.1
 
 Download
 --------
 
 ```groovy
 dependencies {
-  implementation 'com.github.forgetman:aspect:0.0.4'
+  implementation 'com.github.forgetman:aspect:0.0.6'
 }
 ```
 
@@ -70,7 +74,7 @@ ext.plugs += [
         aspect: 'android-aspectjx',
 ]
 ext.deps += [
-        aspect: 'com.github.forgetman:aspect:0.0.5'
+        aspect: 'com.github.forgetman:aspect:0.0.6'
 ]
 ```
 

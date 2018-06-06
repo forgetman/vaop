@@ -5,6 +5,7 @@ buildscript {
 
     dependencies {
         classpath paths.gradlePlugin
+        classpath paths.kotlinPlugin
         classpath paths.mavenPlugin
         classpath paths.aspect
     }

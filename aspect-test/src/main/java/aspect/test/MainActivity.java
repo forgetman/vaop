@@ -7,7 +7,9 @@ import android.util.Log;
 
 import aspect.annotation.Duration;
 import aspect.annotation.MainThread;
+import aspect.annotation.RequestPermission;
 import aspect.annotation.SubThread;
+import aspect.permission.Permission;
 
 /**
  * @author yuansui
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         testSubThread();
         testMainThread();
         testDuration();
+
+        testPermission();
     }
 
     @SubThread
@@ -40,5 +44,14 @@ public class MainActivity extends AppCompatActivity {
     @Duration
     public void testDuration() {
         Log.d(TAG, "testDuration");
+    }
+
+    @RequestPermission(request = Permission.CAMERA, message = "babababababa")
+    public void testPermission() {
+        Log.d(TAG, "testPermissions");
+    }
+
+    public void testCameraPermission() {
+
     }
 }
