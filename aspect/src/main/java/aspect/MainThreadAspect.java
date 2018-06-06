@@ -1,5 +1,8 @@
 package aspect;
 
+import android.os.Handler;
+import android.os.Looper;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -20,15 +23,13 @@ public class MainThreadAspect extends BaseAspect {
 
     @Around(START_SYNTHETIC + "methodCut()")
     public void around(final ProceedingJoinPoint joinPoint) {
-//        Flowable.create(e -> {
-//            try {
-//                joinPoint.proceed();
-//            } catch (Throwable throwable) {
-//                throwable.printStackTrace();
-//            }
-//        }, BackpressureStrategy.BUFFER)
-//                .subscribeOn(AndroidSchedulers.mainThread())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe();
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(() -> {
+            try {
+                joinPoint.proceed();
+            } catch (Throwable throwable) {
+                throwable.printStackTrace();
+            }
+        });
     }
 }

@@ -1,9 +1,12 @@
 package aspect;
 
+import android.util.Log;
+
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
 
 /**
  * 采用RxJava异步处理
@@ -20,18 +23,21 @@ public class SubThreadAspect extends BaseAspect {
 
     @Around(START_SYNTHETIC + "methodCut()")
     public void around(final ProceedingJoinPoint joinPoint) {
-//        Flowable.create(e -> {
-//            Looper.prepare();
-//            try {
-//                joinPoint.proceed();
-//            } catch (Throwable throwable) {
-//                throwable.printStackTrace();
-//            }
-//            Looper.loop();
-//        }, BackpressureStrategy.BUFFER)
-//                .subscribeOn(Schedulers.io())
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .subscribe();
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
 
+                MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+                String className = methodSignature.getDeclaringType().getSimpleName();
+                Log.d(className, "new thread id = " + android.os.Process.myTid());
+
+                try {
+                    joinPoint.proceed();
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
+        }.start();
     }
 }

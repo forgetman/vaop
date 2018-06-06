@@ -4,12 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import aspect.annotation.Duration;
 import aspect.annotation.MainThread;
 import aspect.annotation.RequestPermission;
 import aspect.annotation.SubThread;
-import aspect.permission.Permission;
 
 /**
  * @author yuansui
@@ -19,16 +19,22 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    private TextView mTv;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mTv = findViewById(R.id.main_tv);
+
+        testSubThread();
         testSubThread();
         testMainThread();
         testDuration();
 
         testPermission();
+        testCameraPermission();
     }
 
     @SubThread
@@ -38,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     @MainThread
     public void testMainThread() {
-        Log.d(TAG, "testMainThread");
+        Log.d("www", "testMainThread id = " + android.os.Process.myTid());
     }
 
     @Duration
@@ -46,12 +52,13 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "testDuration");
     }
 
-    @RequestPermission(request = Permission.CAMERA, message = "babababababa")
+    @RequestPermission(request = Permission.LOCATION, message = "打开定位权限")
     public void testPermission() {
         Log.d(TAG, "testPermissions");
     }
 
+    @RequestPermission(request = Permission.CAMERA, message = "打开相机权限")
     public void testCameraPermission() {
-
+        Log.d(TAG, "testCameraPermission");
     }
 }

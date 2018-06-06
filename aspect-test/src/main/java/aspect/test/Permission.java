@@ -1,4 +1,4 @@
-package aspect.permission;
+package aspect.test;
 
 import android.Manifest.permission;
 import android.support.annotation.StringDef;
