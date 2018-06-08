@@ -63,6 +63,42 @@ if you are using proguard, add this to your `proguard`:
 -keep class aspect.** {*;}
 ```
 
+How to use
+----------
+there are several annotations define, use like this
+```java
+public class Test {
+    public Test() {
+        func();
+    }
+    
+    @Duration
+    private void func() {
+        // do something
+    }
+}
+```
+
+it also support Kotlin, use like this
+```kotlin
+class Test {
+    init {
+        func()
+    }
+    
+    @Duration
+    fun func() {
+        // do something
+    }
+}
+```
+
++ Duration: log the duration of method when it be invoked
++ MainThread: invoke method in main thread
++ SubThread: invoke method in sub thread
++ Safe: invoke method with try catch inside
++ RequestPermission: request the permission before method is invoked
+
 Advise
 ----
 here is a suggestion of using aspect in your project: new a `aspect.gradle` file
