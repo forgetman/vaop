@@ -1,9 +1,9 @@
 # aspect [![](https://jitpack.io/v/forgetman/aspect.svg)](https://jitpack.io/#forgetman/aspect)
-an aop project
+an aop project with some common usage
 
 Update
 ------
-+ v0.1.1:    permission request
++ v0.1.1: support permission request
 
 Dependency
 ------
