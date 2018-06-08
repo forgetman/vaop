@@ -7,11 +7,11 @@ Update
 
 Dependency
 ------
-I use [aspectjx](https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx) instead of [aspectj](https://github.com/eclipse/org.aspectj), because it is more easier to use and support Kotlin
+use [aspectjx](https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx) instead of [aspectj](https://github.com/eclipse/org.aspectj), because it is more easier to use and support Kotlin
 
 Warning
 -------
-You must compile with java8, set to your `mudule.gradle`
+you must compile with java8, set to your `mudule.gradle`
 ```groovy
 compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
