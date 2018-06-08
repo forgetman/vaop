@@ -120,6 +120,7 @@ buildscript {
     apply from: 'aspect.gradle'
     dependencies {
         // ...
+        classpath paths.aspect
     }
 }
 ```
