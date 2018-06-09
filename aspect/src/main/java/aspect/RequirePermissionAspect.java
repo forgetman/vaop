@@ -10,17 +10,17 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
-import aspect.annotation.RequestPermission;
+import aspect.annotation.RequirePermission;
 import aspect.permission.PermissionRequestActivity;
 
 @Aspect
-public class RequestPermissionAspect extends BaseAspect {
-    @Pointcut(START + "RequestPermission" + " * *(..)) && @annotation(request)")
-    public void requestPermissionMethod(RequestPermission request) {
+public class RequirePermissionAspect extends BaseAspect {
+    @Pointcut(START + "RequirePermission" + " * *(..)) && @annotation(value)")
+    public void methodCut(RequirePermission value) {
     }
 
-    @Around("requestPermissionMethod(request)")
-    public void interceptPermissionRequest(final ProceedingJoinPoint joinPoint, final RequestPermission request) {
+    @Around("methodCut(value)")
+    public void interceptPermissionRequest(final ProceedingJoinPoint joinPoint, final RequirePermission value) {
         Context context = null;
         final Object object = joinPoint.getThis();
         if (object instanceof Context) {
@@ -38,7 +38,7 @@ public class RequestPermissionAspect extends BaseAspect {
 
         final Context context4Toast = context;
 
-        PermissionRequestActivity.permissionRequest(context, request.request(), success -> {
+        PermissionRequestActivity.permissionRequest(context, value.value(), success -> {
             if (success) {
                 try {
                     joinPoint.proceed();
@@ -46,7 +46,13 @@ public class RequestPermissionAspect extends BaseAspect {
                     throwable.printStackTrace();
                 }
             } else {
-                Toast.makeText(context4Toast, request.message(), Toast.LENGTH_SHORT).show();
+                String message;
+                if (value.messageId() != 0) {
+                    message = context4Toast.getString(value.messageId());
+                } else {
+                    message = value.message();
+                }
+                Toast.makeText(context4Toast, message, Toast.LENGTH_SHORT).show();
             }
 
             PermissionRequestActivity.clearCallback();

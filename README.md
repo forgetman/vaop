@@ -3,6 +3,7 @@ an aop project with some common usage
 
 Update
 ------
++ v0.1.2: adjust the permission request rule, message support resource id
 + v0.1.1: support permission request
 
 Dependency
@@ -26,7 +27,7 @@ Download
 
 ```groovy
 dependencies {
-  implementation 'com.github.forgetman:aspect:0.1.1'
+  implementation 'com.github.forgetman:aspect:0.1.2'
 }
 ```
 
@@ -110,7 +111,7 @@ ext.plugs += [
         aspect: 'android-aspectjx',
 ]
 ext.deps += [
-        aspect: 'com.github.forgetman:aspect:0.1.1'
+        aspect: 'com.github.forgetman:aspect:0.1.2'
 ]
 ```
 

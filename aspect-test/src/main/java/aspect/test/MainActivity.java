@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import aspect.annotation.Duration;
 import aspect.annotation.MainThread;
-import aspect.annotation.RequestPermission;
+import aspect.annotation.RequirePermission;
 import aspect.annotation.SubThread;
 
 /**
@@ -33,8 +33,9 @@ public class MainActivity extends AppCompatActivity {
         testMainThread();
         testDuration();
 
-        testPermission();
-        testCameraPermission();
+//        testPermission();
+//        testCameraPermission();
+        testMultiPermissions();
     }
 
     @SubThread
@@ -52,13 +53,18 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "testDuration");
     }
 
-    @RequestPermission(request = Permission.LOCATION, message = "打开定位权限")
+    @RequirePermission(value = Permission.LOCATION, message = "打开定位权限")
     public void testPermission() {
         Log.d(TAG, "testPermissions");
     }
 
-    @RequestPermission(request = Permission.CAMERA, message = "打开相机权限")
+    @RequirePermission(value = Permission.CAMERA, message = "打开相机权限")
     public void testCameraPermission() {
         Log.d(TAG, "testCameraPermission");
+    }
+
+    @RequirePermission(value = {Permission.CAMERA, Permission.LOCATION}, messageId = R.string.app_name)
+    public void testMultiPermissions() {
+        Log.d(TAG, "testMultiPermissions");
     }
 }

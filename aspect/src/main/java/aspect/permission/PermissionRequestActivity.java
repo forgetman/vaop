@@ -9,7 +9,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,16 +63,22 @@ public class PermissionRequestActivity extends Activity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == PERMISSION_CODE) {
+            boolean denied = false;
             for (int result : grantResults) {
-                Log.e("onPermissionsResult", "grantResult: = " + result);
-                if (result == PackageManager.PERMISSION_GRANTED) {
-                    if (mCallback != null) {
-                        mCallback.onResult(true);
-                    }
-                } else {
-                    if (mCallback != null) {
-                        mCallback.onResult(false);
-                    }
+                // 只要有一个是不通过的, 这一批申请都当做不通过处理
+                if (result != PackageManager.PERMISSION_GRANTED) {
+                    denied = true;
+                    break;
+                }
+            }
+
+            if (denied) {
+                if (mCallback != null) {
+                    mCallback.onResult(false);
+                }
+            } else {
+                if (mCallback != null) {
+                    mCallback.onResult(true);
                 }
             }
         }
