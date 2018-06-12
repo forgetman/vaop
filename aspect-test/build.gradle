@@ -1,5 +1,6 @@
 apply plugin: plugs.android.app
-apply plugin: 'fm.plugin.aspect'
+apply plugin: plugs.aspectjx
+//apply plugin: 'fm.plugin.aspect'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -43,13 +44,13 @@ dependencies {
     implementation deps.rx.android
 }
 
-buildscript {
-    repositories {
-        maven { url uri('../repo') }
-        mavenLocal()
-    }
-
-    dependencies {
-        classpath 'fm.plugin:aspect:1.0.0'
-    }
-}
+//buildscript {
+//    repositories {
+//        maven { url uri('../repo') }
+//        mavenLocal()
+//    }
+//
+//    dependencies {
+//        classpath 'fm.plugin:aspect:1.0.0'
+//    }
+//}
