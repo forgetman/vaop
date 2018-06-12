@@ -1,5 +1,5 @@
 apply plugin: plugs.android.app
-apply plugin: plugs.aspect
+apply plugin: 'fm.plugin.aspect'
 
 android {
     compileSdkVersion versions.compileSdk
@@ -40,9 +40,5 @@ dependencies {
 
     implementation project(':aspect')
     implementation deps.rx.java
-//    implementation deps.rx.android
-
-//    implementation 'org.aspectj:aspectjrt:1.9.1'
+    implementation deps.rx.android
 }
-
-apply plugin: 'forgetman.plugin.aspectj'

@@ -1,38 +1,55 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
 
+//apply plugin: plugs.maven
+group='com.github.forgetman'
+
 dependencies {
-    compile gradleApi()//gradle sdk
-    compile localGroovy()//groovy sdk
+    compile gradleApi() // gradle sdk
+    compile localGroovy() // groovy sdk
     compile 'com.android.tools.build:gradle:3.1.3'
-    compile 'org.aspectj:aspectjtools:1.9.1'
-//    compile 'org.aspectj:aspectjrt:1.9.1'
 }
 
 buildscript {
     repositories {
+        google()
+        jcenter()
         mavenCentral()
     }
-//    dependencies {
-//        classpath 'org.aspectj:aspectjtools:1.9.1'
-//    }
+    dependencies {
+        classpath paths.aspect
+    }
 }
 
 uploadArchives {
     repositories.mavenDeployer {
         repository(url: uri('../repo'))
-        pom.groupId = 'forgetman.plugin'
+        pom.groupId = 'fm.plugin'
         pom.artifactId = 'aspect'
         pom.version = '1.0.0'
     }
 }
 
-//group = 'forgetman.plugin'
-//version = '1.0.0'
-//uploadArchives {
-//    repositories {
-//        mavenDeployer {
-//            repository(url: uri('../repo'))
-//        }
-//    }
+//// 打包源码jar
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
+//
+//task javadoc(type: Javadoc) {
+//    failOnError  false
+//    source = android.sourceSets.main.java.sourceFiles
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    classpath += configurations.compile
+//}
+//
+//// 打包文档jar
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//
+//artifacts {
+//    archives sourcesJar
+//    archives javadocJar
 //}

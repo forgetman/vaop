@@ -10,7 +10,7 @@ buildscript {
         classpath paths.gradlePlugin
         classpath paths.mavenPlugin
         classpath paths.aspect
-        classpath 'forgetman.plugin:aspect:1.0.0'
+        classpath 'fm.plugin:aspect:1.0.0'
     }
 }
 
