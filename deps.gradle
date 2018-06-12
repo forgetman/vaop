@@ -33,22 +33,22 @@ ext.plugs = [
 
 ext.paths = [
         gradlePlugin: "com.android.tools.build:gradle:$versions.androidPlugin",
-        kotlinPlugin    : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+        kotlinPlugin: "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
         mavenPlugin : 'com.github.dcendents:android-maven-gradle-plugin:2.1',
 ]
 
 ext.deps = [
-        support    : [
-                compat          : "com.android.support:support-compat:$versions.supportLibrary",
-                appcompat       : "com.android.support:appcompat-v7:$versions.supportLibrary",
-                annotations     : "com.android.support:support-annotations:$versions.supportLibrary",
-                v4              : "com.android.support:support-v4:$versions.supportLibrary",
+        support: [
+                compat     : "com.android.support:support-compat:$versions.supportLibrary",
+                appcompat  : "com.android.support:appcompat-v7:$versions.supportLibrary",
+                annotations: "com.android.support:support-annotations:$versions.supportLibrary",
+                v4         : "com.android.support:support-v4:$versions.supportLibrary",
         ],
-        rx: [
+        rx     : [
                 java   : "io.reactivex.rxjava2:rxjava:$versions.rx.java",
                 android: "io.reactivex.rxjava2:rxandroid:$versions.rx.android", // https://github.com/ReactiveX/RxAndroid
         ],
-        kotlin     : [
+        kotlin : [
                 kotlin : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
                 reflect: "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin",
         ],
@@ -59,6 +59,7 @@ static def addRepos(RepositoryHandler handler) {
     handler.jcenter()
     handler.mavenCentral()
     handler.maven { url 'https://jitpack.io' }
+    handler.mavenLocal()
 }
 
 ext.addRepos = this.&addRepos

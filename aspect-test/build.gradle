@@ -5,7 +5,6 @@ android {
     compileSdkVersion versions.compileSdk
     buildToolsVersion versions.buildTools
 
-
     defaultConfig {
         applicationId "aspect.test.app"
 
@@ -41,5 +40,9 @@ dependencies {
 
     implementation project(':aspect')
     implementation deps.rx.java
-    implementation deps.rx.android
+//    implementation deps.rx.android
+
+//    implementation 'org.aspectj:aspectjrt:1.9.1'
 }
+
+apply plugin: 'forgetman.plugin.aspectj'

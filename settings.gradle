@@ -1,1 +1,1 @@
-include ':aspect', ':aspect-test'
+include ':aspect', ':aspect-test', ':aspect-plugin'

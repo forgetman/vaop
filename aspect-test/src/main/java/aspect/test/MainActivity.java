@@ -36,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
 //        testPermission();
 //        testCameraPermission();
         testMultiPermissions();
+
+//        Observable.fromCallable(() -> {null})
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe();
     }
 
     @SubThread
