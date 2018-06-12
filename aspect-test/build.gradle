@@ -42,3 +42,14 @@ dependencies {
     implementation deps.rx.java
     implementation deps.rx.android
 }
+
+buildscript {
+    repositories {
+        maven { url uri('../repo') }
+        mavenLocal()
+    }
+
+    dependencies {
+        classpath 'fm.plugin:aspect:1.0.0'
+    }
+}

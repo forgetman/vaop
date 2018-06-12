@@ -9,6 +9,10 @@ class AspectjPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
+        project.dependencies {
+            implementation 'com.github.forgetman:aspect:0.1.3'
+        }
+
         project.plugins.apply("android-aspectjx")
 
         final def log = project.logger

@@ -3,11 +3,11 @@ ext.versions += [
 ]
 
 ext.paths += [
-        aspect: 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1' // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
+        aspectjx: 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1' // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
 ]
 
 ext.plugs += [
-        aspect: 'android-aspectjx'
+        aspectjx: 'android-aspectjx'
 ]
 
 ext.deps += [

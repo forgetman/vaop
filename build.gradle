@@ -2,15 +2,11 @@ buildscript {
     apply from: 'deps.gradle'
     apply from: 'aspect.gradle'
     addRepos(repositories)
-    repositories {
-        maven { url uri('repo') }
-    }
 
     dependencies {
         classpath paths.gradlePlugin
         classpath paths.mavenPlugin
-        classpath paths.aspect
-        classpath 'fm.plugin:aspect:1.0.0'
+        classpath paths.aspectjx
     }
 }
 

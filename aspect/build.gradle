@@ -1,5 +1,5 @@
 apply plugin: plugs.android.lib
-apply plugin: plugs.aspect
+apply plugin: plugs.aspectjx
 
 apply plugin: plugs.maven
 group='com.github.forgetman'
