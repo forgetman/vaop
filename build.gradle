@@ -1,11 +1,9 @@
 buildscript {
     apply from: 'deps.gradle'
-    apply from: 'aspect.gradle'
     addRepos(repositories)
+    addDependencies(getDependencies())
 
     dependencies {
-        classpath paths.gradlePlugin
-        classpath paths.mavenPlugin
         classpath paths.aspectjx
     }
 }
@@ -18,4 +16,4 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-apply from: 'version.gradle'
+apply from: 'https://github.com/forgetman/gradle-deps/blob/master/version.gradle?raw=true'

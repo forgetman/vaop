@@ -1,1 +1,1 @@
-include ':aspect', ':aspect-test', ':aspect-plugin'
+include ':vaop-runtime', ':vaop-test', ':vaop-plugin', ':vaop-annotation'

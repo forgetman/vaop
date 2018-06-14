@@ -1,0 +1,57 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+//apply plugin: plugs.maven
+group = 'com.github.forgetman'
+
+dependencies {
+    implementation gradleApi() // gradle sdk
+    implementation localGroovy() // groovy sdk
+    implementation 'com.android.tools.build:gradle:3.1.3'
+    implementation 'org.aspectj:aspectjtools:1.9.1'
+    implementation 'org.aspectj:aspectjrt:1.9.1'
+}
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath paths.aspectjx
+    }
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: uri('../repo'))
+        pom.groupId = 'fm.plugin'
+        pom.artifactId = 'aspect'
+        pom.version = '1.0.0'
+    }
+}
+
+//// 打包源码jar
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
+//
+//task javadoc(type: Javadoc) {
+//    failOnError  false
+//    source = android.sourceSets.main.java.sourceFiles
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//    classpath += configurations.compile
+//}
+//
+//// 打包文档jar
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//
+//artifacts {
+//    archives sourcesJar
+//    archives javadocJar
+//}
