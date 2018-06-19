@@ -18,5 +18,5 @@ public @interface IOThread {
     /**
      * @return 子线程的类型，默认是多线程池
      */
-   /* @ThreadType */int value() default ThreadType.FIXED;
+    @ThreadType int value() default ThreadType.FIXED;
 }

@@ -1,7 +1,6 @@
 package vaop;
 
 import android.os.Looper;
-import android.util.Log;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -19,7 +18,7 @@ import vaop.util.AppExecutors;
 @Aspect
 public class MainThreadAspect extends BaseAspect {
 
-    @Pointcut("within(@aspect.annotation.MainThread *)")
+    @Pointcut("within(@vaop.annotation.MainThread *)")
     public void withinAnnotatedClass() {
     }
 
@@ -27,7 +26,7 @@ public class MainThreadAspect extends BaseAspect {
     public void methodInsideAnnotatedType() {
     }
 
-    @Pointcut("execution(@aspect.annotation.MainThread * *(..)) || methodInsideAnnotatedType()")
+    @Pointcut("execution(@vaop.annotation.MainThread * *(..)) || methodInsideAnnotatedType()")
     public void method() {
     }
 
@@ -36,8 +35,6 @@ public class MainThreadAspect extends BaseAspect {
         if (Looper.getMainLooper() == Looper.myLooper()) {
             joinPoint.proceed();
         } else {
-            Log.d("www", "thread id = " + Thread.currentThread().getId());
-            Log.d("www", "thread id = " + Thread.currentThread().getName());
             AppExecutors.get().mainThread().execute(() -> {
                 try {
                     joinPoint.proceed();

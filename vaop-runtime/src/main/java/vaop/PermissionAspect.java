@@ -15,6 +15,7 @@ import vaop.permission.PermissionRequestActivity;
 
 @Aspect
 public class PermissionAspect extends BaseAspect {
+
     @Pointcut(START + "Permission" + " * *(..)) && @annotation(value)")
     public void methodCut(Permission value) {
     }

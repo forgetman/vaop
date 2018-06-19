@@ -1,4 +1,4 @@
-package aspect;
+package vaop;
 
 import android.util.Log;
 
@@ -20,7 +20,7 @@ public class SafeAspect extends BaseAspect {
 
     private static final String TAG = SafeAspect.class.getSimpleName();
 
-    @Pointcut("@within(aspect.annotation.Safe)||@annotation(aspect.annotation.Safe)")
+    @Pointcut("@within(vaop.annotation.Safe)||@annotation(vaop.annotation.Safe)")
     public void methodCut() {
     }
 

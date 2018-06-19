@@ -1,7 +1,6 @@
 package vaop;
 
 import android.os.Looper;
-import android.util.Log;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -21,7 +20,7 @@ import vaop.util.AppExecutors;
 @Aspect
 public class IOThreadAspect extends BaseAspect {
 
-    @Pointcut("within(@aspect.annotation.IOThread *)")
+    @Pointcut("within(@vaop.annotation.IOThread *)")
     public void withinAnnotatedClass() {
     }
 
@@ -29,7 +28,7 @@ public class IOThreadAspect extends BaseAspect {
     public void methodInsideAnnotatedType() {
     }
 
-    @Pointcut("execution(@aspect.annotation.IOThread * *(..)) || methodInsideAnnotatedType()")
+    @Pointcut("execution(@vaop.annotation.IOThread * *(..)) || methodInsideAnnotatedType()")
     public void method() {
     }  //方法切入点
 
@@ -63,8 +62,6 @@ public class IOThreadAspect extends BaseAspect {
      */
     private Object getProceedResult(ProceedingJoinPoint joinPoint) {
         try {
-            Log.d("www", "thread id = " + Thread.currentThread().getId());
-            Log.d("www", "thread id = " + Thread.currentThread().getName());
             return joinPoint.proceed();
         } catch (Throwable e) {
             e.printStackTrace();

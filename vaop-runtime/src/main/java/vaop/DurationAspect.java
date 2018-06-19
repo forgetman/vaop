@@ -1,5 +1,6 @@
 package vaop;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -7,8 +8,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
-
-import java.util.Locale;
 
 import vaop.annotation.Duration;
 import vaop.util.StopWatch;
@@ -46,17 +45,11 @@ public class DurationAspect extends BaseAspect {
         Object result = joinPoint.proceed();
         stopWatch.stop();
 
-        if (className == null || className.isEmpty()) {
+        if (TextUtils.isEmpty(className)) {
             className = "Anonymous class";
         }
-
-        Log.d(className, buildLogMessage(methodName, stopWatch.getElapsedTime()));
+        Log.d(className, methodName + "() 持续 " + stopWatch.getElapsedTime() + " 毫秒");
 
         return result;
-    }
-
-    private static String buildLogMessage(String methodName, long duration) {
-        // FIXME: 把单位好好转换一下
-        return String.format(Locale.CHINESE, "%s() 持续 %d 毫秒", methodName, duration);
     }
 }

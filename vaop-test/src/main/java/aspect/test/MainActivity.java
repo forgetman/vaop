@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         testDuration();
 
 //        testPermission();
-//        testCameraPermission();
-        testMultiPermissions();
+        testCameraPermission();
+//        testMultiPermissions();
     }
 
     @IOThread
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "testDuration");
     }
 
-    @Permission(value = permission.ACCESS_FINE_LOCATION, message = "打开定位权限")
+    @Permission(value = permission.ACCESS_COARSE_LOCATION, message = "打开定位权限")
     public void testPermission() {
         Log.d(TAG, "testPermissions");
     }
