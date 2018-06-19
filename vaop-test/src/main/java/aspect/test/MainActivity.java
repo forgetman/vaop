@@ -11,6 +11,7 @@ import vaop.annotation.Duration;
 import vaop.annotation.IOThread;
 import vaop.annotation.MainThread;
 import vaop.annotation.Permission;
+import vaop.annotation.Safe;
 
 
 /**
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 //        testPermission();
         testCameraPermission();
 //        testMultiPermissions();
+
+        testSafe();
     }
 
     @IOThread
@@ -68,5 +71,12 @@ public class MainActivity extends AppCompatActivity {
     @Permission(value = {permission.CAMERA, permission.ACCESS_FINE_LOCATION}, messageId = R.string.app_name)
     public void testMultiPermissions() {
         Log.d(TAG, "testMultiPermissions");
+    }
+
+    @Safe
+    public void testSafe() {
+        Log.d(TAG, "testSafe");
+        Integer i = null;
+        i.byteValue();
     }
 }
