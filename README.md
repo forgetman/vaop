@@ -99,9 +99,11 @@ class Test {
 
 + Duration: log the duration of method when it be invoked
 + MainThread: invoke method in main thread
-+ SubThread: invoke method in sub thread
++ IOThread: invoke method in IO thread
 + Safe: invoke method with try catch inside
-+ RequestPermission: request the permission before method is invoked
++ Permission: request the permission before method is invoked
++ SingleClick: prevent a multi click on the view during a short time
++ DebugLog: record the arguments and returned value of method
 
 Advise
 ----
@@ -114,7 +116,7 @@ ext.plugs += [
         aspect: 'android-aspectjx',
 ]
 ext.deps += [
-        aspect: 'com.github.forgetman:aspect:0.1.2'
+        aspect: 'com.github.forgetman:aspect:$version'
 ]
 ```
 
