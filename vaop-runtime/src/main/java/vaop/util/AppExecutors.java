@@ -78,11 +78,11 @@ public final class AppExecutors {
     }
 
     private static class MainThreadExecutor implements Executor {
-        private Handler mainThreadHandler = new Handler(Looper.getMainLooper());
+        private Handler mHandler = new Handler(Looper.getMainLooper());
 
         @Override
         public void execute(@NonNull Runnable command) {
-            mainThreadHandler.post(command);
+            mHandler.post(command);
         }
     }
 }
