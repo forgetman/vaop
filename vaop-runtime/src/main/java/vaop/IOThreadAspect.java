@@ -30,10 +30,10 @@ public class IOThreadAspect extends BaseAspect {
 
     @Pointcut("execution(@vaop.annotation.IOThread * *(..)) || methodInsideAnnotatedType()")
     public void method() {
-    }  //方法切入点
+    }
 
     @SuppressWarnings("unchecked")
-    @Around("method() && @annotation(ioThread)")//在连接点进行方法替换
+    @Around("method() && @annotation(ioThread)")
     public Object aroundJoinPoint(final ProceedingJoinPoint joinPoint, IOThread ioThread) throws Throwable {
         if (Looper.getMainLooper() != Looper.myLooper()) {
             return joinPoint.proceed();
@@ -42,12 +42,12 @@ public class IOThreadAspect extends BaseAspect {
             switch (ioThread.value()) {
                 case ThreadType.SINGLE:
                 case ThreadType.DISK: {
-                    result = AppExecutors.get().singleIO().submit((Callable) () -> getProceedResult(joinPoint)).get();
+                    result = AppExecutors.inst().singleIO().submit((Callable) () -> getProceedResult(joinPoint)).get();
                 }
                 break;
                 case ThreadType.FIXED:
                 case ThreadType.NETWORK: {
-                    result = AppExecutors.get().poolIO().submit((Callable) () -> getProceedResult(joinPoint)).get();
+                    result = AppExecutors.inst().poolIO().submit((Callable) () -> getProceedResult(joinPoint)).get();
                 }
                 break;
             }

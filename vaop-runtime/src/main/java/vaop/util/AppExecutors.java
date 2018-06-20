@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 
 public final class AppExecutors {
 
-    private static AppExecutors sInstance;
+    private static AppExecutors mInst;
 
     /**
      * 单线程池
@@ -54,15 +54,15 @@ public final class AppExecutors {
      *
      * @return
      */
-    public static AppExecutors get() {
-        if (sInstance == null) {
+    public static AppExecutors inst() {
+        if (mInst == null) {
             synchronized (AppExecutors.class) {
-                if (sInstance == null) {
-                    sInstance = new AppExecutors();
+                if (mInst == null) {
+                    mInst = new AppExecutors();
                 }
             }
         }
-        return sInstance;
+        return mInst;
     }
 
     public ExecutorService singleIO() {

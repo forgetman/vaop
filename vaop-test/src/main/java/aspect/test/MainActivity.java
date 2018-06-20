@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 
 import vaop.annotation.Duration;
@@ -12,6 +14,7 @@ import vaop.annotation.IOThread;
 import vaop.annotation.MainThread;
 import vaop.annotation.Permission;
 import vaop.annotation.Safe;
+import vaop.annotation.SingleClick;
 
 
 /**
@@ -31,8 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         mTv = findViewById(R.id.main_tv);
 
-        testSubThread();
-        testSubThread();
+//        testSubThread();
         testMainThread();
         testDuration();
 
@@ -40,17 +42,26 @@ public class MainActivity extends AppCompatActivity {
         testCameraPermission();
 //        testMultiPermissions();
 
-        testSafe();
+//        testSafe();
+        mTv.setOnClickListener(new OnClickListener() {
+
+            @SingleClick
+            @Override
+            public void onClick(View v) {
+                testSubThread();
+            }
+        });
     }
 
     @IOThread
     public void testSubThread() {
-        Log.d("www", "testSubThread id = " + android.os.Process.myTid());
+        Log.d(TAG, "testSubThread id = " + android.os.Process.myTid());
+        mTv.setText("sssss");
     }
 
     @MainThread
     public void testMainThread() {
-        Log.d("www", "testMainThread id = " + android.os.Process.myTid());
+        Log.d(TAG, "testMainThread id = " + android.os.Process.myTid());
     }
 
     @Duration

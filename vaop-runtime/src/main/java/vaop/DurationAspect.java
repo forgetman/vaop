@@ -10,7 +10,7 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 
 import vaop.annotation.Duration;
-import vaop.util.StopWatch;
+import vaop.util.Interval;
 
 /**
  * 根据方法, 打印消耗的时间
@@ -40,15 +40,15 @@ public class DurationAspect extends BaseAspect {
 
         String className = methodSignature.getDeclaringType().getSimpleName();
         String methodName = methodSignature.getName();
-        final StopWatch stopWatch = new StopWatch();
-        stopWatch.start();
+        final Interval interval = new Interval();
+        interval.start();
         Object result = joinPoint.proceed();
-        stopWatch.stop();
+        interval.stop();
 
         if (TextUtils.isEmpty(className)) {
             className = "Anonymous class";
         }
-        Log.d(className, methodName + "() 持续 " + stopWatch.getElapsedTime() + " 毫秒");
+        Log.d(className, methodName + "() 持续 " + interval.getElapsedTime() + " 毫秒");
 
         return result;
     }

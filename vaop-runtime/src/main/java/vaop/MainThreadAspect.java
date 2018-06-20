@@ -35,7 +35,7 @@ public class MainThreadAspect extends BaseAspect {
         if (Looper.getMainLooper() == Looper.myLooper()) {
             joinPoint.proceed();
         } else {
-            AppExecutors.get().mainThread().execute(() -> {
+            AppExecutors.inst().mainThread().execute(() -> {
                 try {
                     joinPoint.proceed();
                 } catch (Throwable e) {
