@@ -3,8 +3,10 @@ an aop project with some common usage
 
 Update
 ------
++ v1.0.0: add 'DebugLog', 'SingleClick'
++ v0.1.5: abandon rxandroid, use thread pool
 + v0.1.2: adjust the permission request rule, message support resource id
-+ v0.1.1: support permission request
++ v0.1.1: add 'Permission'
 
 Dependency
 ------
@@ -27,9 +29,10 @@ Download
 
 ```groovy
 dependencies {
-  implementation 'com.github.forgetman:aspect:0.1.2'
+  implementation 'com.github.forgetman:aspect:$version'
 }
 ```
+replace `$version` to the specified version number
 
 add it in your root `build.gradle` at the end of repositories:
 

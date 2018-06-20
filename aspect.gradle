@@ -11,5 +11,5 @@ ext.plugs += [
 ]
 
 ext.deps += [
-        aspect: 'com.github.forgetman:aspect:0.1.5'
+        aspect: 'com.github.forgetman:aspect:1.0.0'
 ]
