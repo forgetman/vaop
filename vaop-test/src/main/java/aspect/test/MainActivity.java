@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import vaop.annotation.DebugLog;
 import vaop.annotation.Duration;
 import vaop.annotation.IOThread;
 import vaop.annotation.MainThread;
@@ -51,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
                 testSubThread();
             }
         });
+
+        testDebugLog("名字", 18);
     }
 
     @IOThread
@@ -89,5 +92,10 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "testSafe");
         Integer i = null;
         i.byteValue();
+    }
+
+    @DebugLog
+    public boolean testDebugLog(String name, int age) {
+        return true;
     }
 }
