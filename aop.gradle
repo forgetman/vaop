@@ -11,5 +11,5 @@ ext.plugs += [
 ]
 
 ext.deps += [
-        aop: 'com.github.forgetman:aspect:1.0.0'
+        aop: 'com.github.forgetman.aspect:vaop-runtime:1.0.1'
 ]
