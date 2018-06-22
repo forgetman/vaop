@@ -1,5 +1,5 @@
 apply plugin: plugs.android.lib
-apply plugin: plugs.aspectjx
+apply plugin: plugs.aop
 
 android {
     compileSdkVersion versions.compileSdk

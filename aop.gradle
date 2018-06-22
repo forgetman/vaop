@@ -1,0 +1,15 @@
+ext.versions += [
+        aspectj: '1.9.1'
+]
+
+ext.paths += [
+        aop: 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1' // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
+]
+
+ext.plugs += [
+        aop: 'android-aspectjx'
+]
+
+ext.deps += [
+        aop: 'com.github.forgetman:aspect:1.0.0'
+]

@@ -3,6 +3,7 @@ an aop project with some common usage
 
 Update
 ------
++ v1.0.1: fix a crash bug on SDK8.0 when request permissions
 + v1.0.0: add 'DebugLog', 'SingleClick'
 + v0.1.5: abandon rxandroid, use thread pool
 + v0.1.2: adjust the permission request rule, message support resource id
@@ -63,8 +64,8 @@ apply plugin: 'android-aspectjx'
 if you are using proguard, add this to your `proguard`:
 
 ```proguard
--dontwarn aspect.**
--keep class aspect.** {*;}
+-dontwarn vaop.**
+-keep class vaop.** {*;}
 ```
 
 How to use
@@ -107,34 +108,37 @@ class Test {
 
 Advise
 ----
-here is a suggestion of using aspect in your project: new a `aspect.gradle` file
+here is a suggestion of using aspect in your project: new a `aop.gradle` file
 ```groovy
+ext.versions += [
+        aspectj: '1.9.1'
+]
 ext.paths += [
-        aspect: 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1', // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
+        aop: 'com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.1' // https://github.com/HujiangTechnology/gradle_plugin_android_aspectjx
 ]
 ext.plugs += [
-        aspect: 'android-aspectjx',
+        aop: 'android-aspectjx'
 ]
 ext.deps += [
-        aspect: 'com.github.forgetman:aspect:$version'
+        aop: 'com.github.forgetman:aspect:$version'
 ]
 ```
 
 and then apply it to your `build.gradle`
 ```groovy
 buildscript {
-    apply from: 'aspect.gradle'
+    apply from: 'aop.gradle'
     dependencies {
         // ...
-        classpath paths.aspect
+        classpath paths.aop
     }
 }
 ```
 you can use it like this
 ```groovy
-apply plugin: plugs.aspect
+apply plugin: plugs.aop
 dependencies {
-  implementation deps.aspect
+  implementation deps.aop
 }
 ```
 

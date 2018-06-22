@@ -1,2 +1,2 @@
 apply from: 'https://github.com/forgetman/gradle-deps/blob/master/deps.gradle?raw=true' // https://github.com/forgetman/gradle-deps/blob/master/deps.gradle
-apply from: 'aspect.gradle'
+apply from: 'aop.gradle'

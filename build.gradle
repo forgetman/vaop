@@ -4,7 +4,7 @@ buildscript {
     addDependencies(getDependencies())
 
     dependencies {
-        classpath paths.aspectjx
+        classpath paths.aop
     }
 }
 
