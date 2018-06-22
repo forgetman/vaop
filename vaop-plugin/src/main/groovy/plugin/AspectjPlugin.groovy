@@ -31,7 +31,7 @@ class AspectjPlugin implements Plugin<Project> {
         }
 
         log.error "========================"
-        log.error "XAOP::Aspectj切片开始编织Class!"
+        log.error "VAOP::Aspectj切片开始编织Class!"
         log.error "========================"
 
         variants.all { variant ->

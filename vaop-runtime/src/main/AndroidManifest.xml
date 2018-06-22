@@ -5,7 +5,6 @@
     <application>
         <activity
             android:name="vaop.permission.PermissionRequestActivity"
-            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
     </application>
 
