@@ -1,4 +1,4 @@
-# VAOP [![](https://jitpack.io/v/forgetman/aspect.svg)](https://jitpack.io/#forgetman/aspect)
+# VAOP [![](https://jitpack.io/v/forgetman/vaop.svg)](https://jitpack.io/#forgetman/vaop)
 an aop project with some common usage
 
 Update
@@ -30,7 +30,7 @@ Download
 
 ```groovy
 dependencies {
-  implementation 'com.github.forgetman.aspect:vaop-runtime:$version'
+  implementation 'com.github.forgetman.vaop:vaop-runtime:$version'
 }
 ```
 replace `$version` to the specified version number
@@ -120,7 +120,7 @@ ext.plugs += [
         aop: 'android-aspectjx'
 ]
 ext.deps += [
-        aop: 'com.github.forgetman.aspect:vaop-runtime:$version'
+        aop: 'com.github.forgetman.vaop:vaop-runtime:$version'
 ]
 ```
 
