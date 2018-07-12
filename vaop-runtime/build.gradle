@@ -27,6 +27,7 @@ dependencies {
     compileOnly deps.support.annotations
 
     api project(":vaop-annotation")
+    implementation deps.permission
 }
 
 apply from: '../gradle-deps/jitpack.gradle'

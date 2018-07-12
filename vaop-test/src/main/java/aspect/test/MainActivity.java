@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         testDuration();
 
 //        testPermission();
-        testCameraPermission();
-//        testMultiPermissions();
+//        testCameraPermission();
+        testMultiPermissions();
 
 //        testSafe();
         mTv.setOnClickListener(new OnClickListener() {

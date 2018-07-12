@@ -3,7 +3,8 @@ package vaop;
 import android.app.Fragment;
 import android.content.Context;
 import android.util.Log;
-import android.widget.Toast;
+
+import com.example.rompermission.RomPermission;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -11,7 +12,6 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
 import vaop.annotation.Permission;
-import vaop.permission.PermissionRequestActivity;
 
 @Aspect
 public class PermissionAspect extends BaseAspect {
@@ -39,24 +39,26 @@ public class PermissionAspect extends BaseAspect {
 
         final Context context4Toast = context;
 
-        PermissionRequestActivity.permissionRequest(context, value.value(), success -> {
-            if (success) {
-                try {
-                    joinPoint.proceed();
-                } catch (Throwable throwable) {
-                    throwable.printStackTrace();
-                }
-            } else {
-                String message;
-                if (value.messageId() != 0) {
-                    message = context4Toast.getString(value.messageId());
-                } else {
-                    message = value.message();
-                }
-                Toast.makeText(context4Toast, message, Toast.LENGTH_SHORT).show();
-            }
+        RomPermission.INSTANCE.checkAndRequest(context, value.value(), 0);
 
-            PermissionRequestActivity.clearCallback();
-        });
+//        PermissionRequestActivity.permissionRequest(context, value.value(), success -> {
+//            if (success) {
+//                try {
+//                    joinPoint.proceed();
+//                } catch (Throwable throwable) {
+//                    throwable.printStackTrace();
+//                }
+//            } else {
+//                String message;
+//                if (value.messageId() != 0) {
+//                    message = context4Toast.getString(value.messageId());
+//                } else {
+//                    message = value.message();
+//                }
+//                Toast.makeText(context4Toast, message, Toast.LENGTH_SHORT).show();
+//            }
+//
+//            PermissionRequestActivity.clearCallback();
+//        });
     }
 }
