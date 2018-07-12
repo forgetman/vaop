@@ -1,0 +1,26 @@
+ext.versions += [
+        kotlin     : '1.2.51',
+        kotlin_anko: '0.10.4',
+]
+
+ext.plugs += [
+        kotlin: [
+                kotlin    : 'kotlin',
+                android   : 'kotlin-android',
+                extensions: 'kotlin-android-extensions',
+                kapt      : 'kotlin-kapt',
+        ],
+]
+
+ext.paths += [
+        kotlinPlugin    : "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin",
+        kotlinExtensions: "org.jetbrains.kotlin:kotlin-android-extensions:$versions.kotlin",
+]
+
+ext.deps += [
+        kotlin: [
+                kotlin : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$versions.kotlin",
+                reflect: "org.jetbrains.kotlin:kotlin-reflect:$versions.kotlin",
+                anko   : "org.jetbrains.anko:anko:$versions.kotlin_anko",
+        ],
+]

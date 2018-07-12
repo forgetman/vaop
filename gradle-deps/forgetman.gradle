@@ -1,0 +1,9 @@
+ext.deps += [
+        forgetman: [
+                /**
+                 * all project is in forgetman's github(https://github.com/forgetman)
+                 */
+                logger      : 'com.github.forgetman:logger:1.0.8',
+                bindingknife: 'com.github.forgetman:BindingKnife:0.0.5',
+        ],
+]

@@ -1,0 +1,7 @@
+ext.plugs += [
+        maven   : 'com.github.dcendents.android-maven',
+]
+
+ext.paths += [
+        mavenPlugin     : 'com.github.dcendents:android-maven-gradle-plugin:2.1',
+]

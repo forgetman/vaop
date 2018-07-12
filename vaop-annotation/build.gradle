@@ -23,4 +23,4 @@ dependencies {
     compileOnly deps.support.annotations
 }
 
-apply from: https.jitpack
+apply from: '../gradle-deps/jitpack.gradle'

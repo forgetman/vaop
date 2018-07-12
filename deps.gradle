@@ -1,2 +1,5 @@
-apply from: 'https://github.com/forgetman/gradle-deps/blob/master/deps.gradle?raw=true' // https://github.com/forgetman/gradle-deps/blob/master/deps.gradle
-apply from: 'aop.gradle'
+apply from: 'gradle-deps/base.gradle'
+
+apply from: 'gradle-deps/vaop.gradle'
+apply from: 'gradle-deps/forgetman.gradle'
+apply from: 'gradle-deps/maven.gradle'

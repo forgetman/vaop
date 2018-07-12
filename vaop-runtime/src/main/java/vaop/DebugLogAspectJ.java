@@ -56,7 +56,6 @@ public class DebugLogAspectJ {
         return result;
     }
 
-
     /**
      * 方法执行前切入
      *

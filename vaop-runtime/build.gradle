@@ -29,7 +29,7 @@ dependencies {
     api project(":vaop-annotation")
 }
 
-apply from: https.jitpack
+apply from: '../gradle-deps/jitpack.gradle'
 
 //import org.aspectj.bridge.IMessage
 //import org.aspectj.bridge.MessageHandler
