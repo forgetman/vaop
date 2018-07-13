@@ -3,6 +3,7 @@ an aop project with some common usage
 
 Update
 ------
++ v1.0.2: use RomPermission
 + v1.0.1: fix a crash bug on SDK8.0 when request permissions
 + v1.0.0: add 'DebugLog', 'SingleClick'
 + v0.1.5: abandon rxandroid, use thread pool
