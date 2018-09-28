@@ -4,8 +4,8 @@ import android.app.Fragment;
 import android.content.Context;
 import android.util.Log;
 
-import com.example.rompermission.PermissionCallback;
-import com.example.rompermission.RomPermission;
+import com.rompermission.PermissionCallback;
+import com.rompermission.RomPermission;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
