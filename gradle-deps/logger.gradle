@@ -1,0 +1,4 @@
+ext.deps += [
+        // https://github.com/forgetman/logger
+        logger: 'com.github.forgetman:logger:1.0.9',
+]
