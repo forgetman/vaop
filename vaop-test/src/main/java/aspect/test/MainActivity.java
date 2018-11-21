@@ -11,8 +11,6 @@ import android.widget.TextView;
 
 import vaop.annotation.DebugLog;
 import vaop.annotation.Duration;
-import vaop.annotation.IOThread;
-import vaop.annotation.MainThread;
 import vaop.annotation.Permission;
 import vaop.annotation.Safe;
 import vaop.annotation.SingleClick;
@@ -56,15 +54,15 @@ public class MainActivity extends AppCompatActivity {
         testDebugLog("名字", 18);
     }
 
-    @IOThread
+//    @IOThread
     public void testSubThread() {
         Log.d(TAG, "testSubThread id = " + android.os.Process.myTid());
         mTv.setText("sssss");
     }
 
-    @MainThread
+//    @MainThread
     public void testMainThread() {
-        Log.d(TAG, "testMainThread id = " + android.os.Process.myTid());
+//        Log.d(TAG, "testMainThread id = " + android.os.Process.myTid());
     }
 
     @Duration
